@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { extractDates } from "../helperFunctions/helperFunctions";
+import { extractDates } from "../utils/helperFunctions";
 import prettyMilliseconds from "pretty-ms";
 
 import upcomingBackground from "../assets/upcomingBackground.png";
@@ -8,6 +8,8 @@ import loader from "../assets/loader.svg";
 export default function Upcoming() {
   const [nextMission, allMissions] = useMission();
   const [days, hours, minutes, seconds] = useDates(allMissions);
+
+  //make the date sections into a separate component of div with time and div with text eg hours and then re-use this
 
   return (
     <section
@@ -129,12 +131,42 @@ function useDates(allMissions) {
         const convertedTimeLeft = prettyMilliseconds(timeLeft, {
           verbose: true,
         });
+        console.log("ctl", convertedTimeLeft);
         setDays(extractDates(convertedTimeLeft, "days"));
         setHours(extractDates(convertedTimeLeft, "hours"));
         setMinutes(extractDates(convertedTimeLeft, "minutes"));
         setSeconds(extractDates(convertedTimeLeft, "seconds"));
+        console.log(days, hours, minutes, seconds);
       }
     }
   }, [allMissions]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds((prev) => {
+        if (prev === 0) {
+          setSeconds("59");
+
+          setMinutes((prev) => {
+            if (prev === 0) {
+              setMinutes("59");
+
+              setHours((prev) => {
+                if (prev === 0) {
+                  setHours("23");
+
+                  setDays((prev) => String(prev) - 1);
+                }
+                return String(prev) - 1;
+              });
+            }
+            return String(prev) - 1;
+          });
+        }
+        return String(prev) - 1;
+      });
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
   return [days, hours, minutes, seconds];
 }
