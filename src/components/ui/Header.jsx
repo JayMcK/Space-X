@@ -7,7 +7,7 @@ import filledHeart from "../../assets/filled-heart.svg";
 
 export default function Header() {
   return (
-    <section className="flex flex-row justify-between items-center bg-themeWhite font-bold px-2 bg-sky-500">
+    <section className="flex flex-row justify-between items-center bg-themeWhite font-bold px-2">
       <div>
         <Link to="/">
           <img
