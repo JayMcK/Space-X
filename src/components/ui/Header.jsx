@@ -4,6 +4,7 @@ import logo from "../../assets/logo.svg";
 import rocket from "../../assets/rocket.svg";
 import planets from "../../assets/planets.svg";
 import filledHeart from "../../assets/filled-heart.svg";
+import house from "../../assets/house.svg";
 
 export default function Header() {
   return (
@@ -18,14 +19,24 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex flex-row">
-        <Link to="/next-launch">
+        <Link to="/">
+          <div className="flex flex-col p-4 space-y-2 cursor-pointer">
+            <img
+              className="h-8 origin-center hover:rotate-12 active:opacity-50"
+              src={house}
+              alt="rocket"
+            />
+            <p className="font-themeFontFamily">Home</p>
+          </div>
+        </Link>
+        <Link to="/upcoming-launch">
           <div className="flex flex-col p-4 space-y-2 cursor-pointer">
             <img
               className="h-8 origin-center hover:rotate-12 active:opacity-50"
               src={rocket}
               alt="rocket"
             />
-            <p className="font-themeFontFamily">Next launch</p>
+            <p className="font-themeFontFamily">Upcoming launch</p>
           </div>
         </Link>
         <Link to="/all-launches">
