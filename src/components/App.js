@@ -9,6 +9,7 @@ import MyLaunches from "./MyLaunches";
 
 function App() {
   const [allLaunches] = useMission([]);
+  const [launches, setLaunches] = useState([]);
 
   function useMission() {
     const ALL_URL = "https://api.spacexdata.com/v4/launches/upcoming";
@@ -19,7 +20,8 @@ function App() {
       const fetchData = async () => {
         const [allMissionsResponse] = await Promise.all([fetch(ALL_URL)]);
         const [allMissions] = await Promise.all([allMissionsResponse.json()]);
-        setAllMissions(allMissions);
+        // setAllMissions(allMissions);
+        setLaunches(allMissions);
       };
       fetchData();
     }, []);
@@ -34,9 +36,14 @@ function App() {
         <Route path="/upcoming-launch" element={<Upcoming />} />
         <Route
           path="/all-launches"
-          element={<AllLaunches launches={allLaunches} />}
+          element={
+            <AllLaunches launches={launches} setLaunches={setLaunches} />
+          }
         />
-        <Route path="/my-launches" element={<MyLaunches />} />
+        <Route
+          path="/my-launches"
+          element={<MyLaunches launches={launches} setLaunches={setLaunches} />}
+        />
       </Routes>
       <Footer />
     </Router>
