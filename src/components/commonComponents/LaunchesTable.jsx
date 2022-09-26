@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-
+import { LOCAL_STORAGE_KEY } from "../../utils/localStorageKey";
 import LaunchEntry from "./LaunchEntry";
 
 export default function LaunchesTable({ launches }) {
-  const LOCAL_STORAGE_KEY = "spaceX.allLaunches";
   const [allLaunches, setAllLaunches] = useState([]);
 
   useEffect(() => {

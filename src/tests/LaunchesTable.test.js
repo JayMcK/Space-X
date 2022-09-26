@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-
 import LaunchesTable from "../components/commonComponents/LaunchesTable";
 
 describe("Test suite for Launches Table Component", () => {
