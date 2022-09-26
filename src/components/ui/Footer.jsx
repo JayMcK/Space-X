@@ -7,7 +7,10 @@ import house from "../../assets/house.svg";
 
 export default function Footer() {
   return (
-    <section className="flex flex-row justify-center items-center bg-themeWhite font-bold px-2 space-x-6 py-4">
+    <section
+      role="contentinfo"
+      className="footer-component flex flex-row justify-center items-center bg-themeWhite font-bold px-2 space-x-6 py-4"
+    >
       <Link to="/">
         <img
           className="h-6 origin-center hover:rotate-12 active:opacity-50"

@@ -8,7 +8,11 @@ import house from "../../assets/house.svg";
 
 export default function Header() {
   return (
-    <section className="flex flex-row justify-between items-center bg-themeWhite font-bold px-2">
+    <nav
+      role="navigation"
+      aria-label="Main"
+      className="header-component flex flex-row justify-between items-center bg-themeWhite font-bold px-2"
+    >
       <div>
         <Link to="/">
           <img
@@ -60,6 +64,6 @@ export default function Header() {
           </div>
         </Link>
       </div>
-    </section>
+    </nav>
   );
 }

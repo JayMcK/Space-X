@@ -5,7 +5,6 @@ import ShareFeature from "./ui/ShareFeature";
 
 import upcomingBackground from "../assets/upcomingBackground.png";
 import loader from "../assets/loader.svg";
-import share from "../assets/share.svg";
 
 export default function Upcoming() {
   const [nextMission, allMissions] = useMission();

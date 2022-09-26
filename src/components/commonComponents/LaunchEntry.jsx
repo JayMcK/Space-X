@@ -7,7 +7,10 @@ export default function LaunchEntry(props) {
   const { id, name, date, launchpad, onHandleLike, liked } = props;
 
   return (
-    <div className="grid grid-cols-12 gap-1 bg-themeWhite text-themeBlack text-center py-2 border border-themeGrey divide-x">
+    <div
+      role="listitem"
+      className="grid grid-cols-12 gap-1 bg-themeWhite text-themeBlack text-center py-2 border border-themeGrey divide-x"
+    >
       <div className="col-span-4">{name}</div>
       <div className="col-span-3 flex flex-col justify-center">
         {new Date(date).toDateString()}

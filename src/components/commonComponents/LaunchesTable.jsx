@@ -7,11 +7,13 @@ export default function LaunchesTable({ launches }) {
   const [allLaunches, setAllLaunches] = useState([]);
 
   useEffect(() => {
-    const newLaunches = launches.map((launch) => {
-      launch.liked = false;
-      return launch;
-    });
-    setAllLaunches(newLaunches);
+    if (launches?.length) {
+      const newLaunches = launches.map((launch) => {
+        launch.liked = false;
+        return launch;
+      });
+      setAllLaunches(newLaunches);
+    }
   }, [launches]);
 
   const handleLike = (id) => {
@@ -30,7 +32,7 @@ export default function LaunchesTable({ launches }) {
   }, [allLaunches]);
 
   return (
-    <section className="m-10">
+    <section role="list" className="list m-10">
       <div className="grid grid-cols-12 gap-1 bg-themeWhite text-themeBlack font-bold text-center p-5">
         <div className="col-span-4">Mission</div>
         <div className="col-span-3">Date (UTC)</div>
