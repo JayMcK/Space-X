@@ -12,10 +12,6 @@ export default function Upcoming() {
   const [days, hours, minutes, seconds] = useDates(allMissions);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  useEffect(() => {
-    console.log("do", dialogOpen);
-  }, [dialogOpen]);
-
   //make the date sections into a separate component of div with time and div with text eg hours and then re-use this
 
   return (
@@ -117,17 +113,21 @@ function useMission() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const [nextMissionResponse, allMissionsResponse] = await Promise.all([
-        fetch(NEXT_URL),
-        fetch(ALL_URL),
-      ]);
-      const [nextMission, allMissions] = await Promise.all([
-        nextMissionResponse.json(),
-        allMissionsResponse.json(),
-      ]);
-      setNextMission(nextMission);
-      setAllMissions(allMissions);
-      setMissionThree(allMissions[3]);
+      try {
+        const [nextMissionResponse, allMissionsResponse] = await Promise.all([
+          fetch(NEXT_URL),
+          fetch(ALL_URL),
+        ]);
+        const [nextMission, allMissions] = await Promise.all([
+          nextMissionResponse.json(),
+          allMissionsResponse.json(),
+        ]);
+        setNextMission(nextMission);
+        setAllMissions(allMissions);
+        setMissionThree(allMissions[3]);
+      } catch (e) {
+        console.log("Oops something went wrong: ", e);
+      }
     };
     fetchData();
   }, []);

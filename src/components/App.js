@@ -18,10 +18,14 @@ function App() {
 
     useEffect(() => {
       const fetchData = async () => {
-        const [allMissionsResponse] = await Promise.all([fetch(ALL_URL)]);
-        const [allMissions] = await Promise.all([allMissionsResponse.json()]);
-        // setAllMissions(allMissions);
-        setLaunches(allMissions);
+        try {
+          const [allMissionsResponse] = await Promise.all([fetch(ALL_URL)]);
+          const [allMissions] = await Promise.all([allMissionsResponse.json()]);
+          // setAllMissions(allMissions);
+          setLaunches(allMissions);
+        } catch (e) {
+          console.log("Oops something went wrong: ", e);
+        }
       };
       fetchData();
     }, []);
