@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
 import { extractDates } from "../utils/helperFunctions";
 import prettyMilliseconds from "pretty-ms";
+import ShareFeature from "./ui/ShareFeature";
 
 import upcomingBackground from "../assets/upcomingBackground.png";
 import loader from "../assets/loader.svg";
+import share from "../assets/share.svg";
 
 export default function Upcoming() {
   const [nextMission, allMissions] = useMission();
   const [days, hours, minutes, seconds] = useDates(allMissions);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    console.log("do", dialogOpen);
+  }, [dialogOpen]);
 
   //make the date sections into a separate component of div with time and div with text eg hours and then re-use this
 
@@ -17,12 +24,23 @@ export default function Upcoming() {
       style={{ backgroundImage: `url(${upcomingBackground})` }}
     >
       <div className="flex flex-col items-center justify-center text-4xl text-themeWhite font-bold">
-        {allMissions.length && (
-          <h2 className="mb-6 text-center">Upcoming: {nextMission.name}</h2>
-        )}
-        {!allMissions.length && (
-          <h2 className="mb-6 animate-pulse text-center">Upcoming: ...</h2>
-        )}
+        <div className="flex flex-col items-center md:flex-row">
+          {allMissions.length && (
+            <h2 className="mb-6 text-center">Upcoming: {nextMission.name}</h2>
+          )}
+          {!allMissions.length && (
+            <h2 className="mb-6 animate-pulse text-center">Upcoming: ...</h2>
+          )}
+          <button
+            onClick={() =>
+              dialogOpen === true ? setDialogOpen(false) : setDialogOpen(true)
+            }
+          >
+            <div className="ml-4 pt-0 md:pt-8">
+              <ShareFeature />
+            </div>
+          </button>
+        </div>
 
         <div className="flex flex-col items-center mb-6">
           {allMissions.length && <p className="text-7xl">{days}</p>}
