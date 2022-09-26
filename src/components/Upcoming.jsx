@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { extractDates } from "../utils/helperFunctions";
 import prettyMilliseconds from "pretty-ms";
-import ShareFeature from "./ui/ShareFeature";
+import ShareFeature from "./commonComponents/ShareFeature";
 
 import upcomingBackground from "../assets/upcomingBackground.png";
 import loader from "../assets/loader.svg";

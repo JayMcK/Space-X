@@ -12,7 +12,7 @@ import {
 } from "react-share";
 
 export default function ShareFeature() {
-  const shareURL = "www.google.com"; //WILL BE URL OF LIVE SITE - UPCOMING LAUNCH PAGE
+  const shareURL = "https://space-x-ebon.vercel.app/upcoming-launch";
   const quote = "Don't miss the next launch to Mars!";
   const hashtag = "#marsishome";
 

@@ -1,6 +1,6 @@
 # Space X -
 
-Please visit the live site here: ///[ADD LIVE SITE HERE]///
+Please visit the live site here: https://space-x-ebon.vercel.app/
 
 ## Introduction
 
