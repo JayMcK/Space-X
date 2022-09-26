@@ -5,41 +5,30 @@ import ShareFeature from "./ui/ShareFeature";
 
 import upcomingBackground from "../assets/upcomingBackground.png";
 import loader from "../assets/loader.svg";
+import share from "../assets/share.svg";
 
 export default function Upcoming() {
   const [nextMission, allMissions] = useMission();
   const [days, hours, minutes, seconds] = useDates(allMissions);
-  const [dialogOpen, setDialogOpen] = useState(false);
-
-  //make the date sections into a separate component of div with time and div with text eg hours and then re-use this
 
   return (
     <section
-      className="flex font-themeFontFamily relative justify-center bg-black md:bg-themeWhite pt-2"
+      className="flex flex-col font-themeFontFamily justify-center bg-black md:bg-themeWhite py-4"
       style={{ backgroundImage: `url(${upcomingBackground})` }}
     >
       <div className="flex flex-col items-center justify-center text-4xl text-themeWhite font-bold">
         <div className="flex flex-col items-center md:flex-row">
-          {allMissions.length && (
+          {allMissions.length ? (
             <h2 className="mb-6 text-center">Upcoming: {nextMission.name}</h2>
-          )}
-          {!allMissions.length && (
+          ) : null}
+          {!allMissions.length ? (
             <h2 className="mb-6 animate-pulse text-center">Upcoming: ...</h2>
-          )}
-          <button
-            onClick={() =>
-              dialogOpen === true ? setDialogOpen(false) : setDialogOpen(true)
-            }
-          >
-            <div className="ml-4 pt-0 md:pt-8">
-              <ShareFeature />
-            </div>
-          </button>
+          ) : null}
         </div>
 
         <div className="flex flex-col items-center mb-6">
-          {allMissions.length && <p className="text-7xl">{days}</p>}
-          {!allMissions.length && (
+          {allMissions.length ? <p className="text-7xl">{days}</p> : null}
+          {!allMissions.length ? (
             <div>
               <img
                 className="h-14 animate-spin my-2"
@@ -47,14 +36,14 @@ export default function Upcoming() {
                 alt="loading"
               />
             </div>
-          )}
+          ) : null}
           <div className="rounded-lg border-2 border-themeWhite">
             <p className="p-1">DAYS</p>
           </div>
         </div>
         <div className="flex flex-col items-center mb-6">
-          {allMissions.length && <p className="text-7xl">{hours}</p>}
-          {!allMissions.length && (
+          {allMissions.length ? <p className="text-7xl">{hours}</p> : null}
+          {!allMissions.length ? (
             <div>
               <img
                 className="h-14 animate-spin my-2"
@@ -62,14 +51,14 @@ export default function Upcoming() {
                 alt="loading"
               />
             </div>
-          )}
+          ) : null}
           <div className="rounded-lg border-2 border-themeWhite">
             <p className="p-1">HOURS</p>
           </div>
         </div>
         <div className="flex flex-col items-center mb-6">
-          {allMissions.length && <p className="text-7xl">{minutes}</p>}
-          {!allMissions.length && (
+          {allMissions.length ? <p className="text-7xl">{minutes}</p> : null}
+          {!allMissions.length ? (
             <div>
               <img
                 className="h-14 animate-spin my-2"
@@ -77,14 +66,14 @@ export default function Upcoming() {
                 alt="loading"
               />
             </div>
-          )}
+          ) : null}
           <div className="rounded-lg border-2 border-themeWhite">
             <p className="p-1">MINUTES</p>
           </div>
         </div>
         <div className="flex flex-col items-center mb-6">
-          {allMissions.length && <p className="text-7xl">{seconds}</p>}
-          {!allMissions.length && (
+          {allMissions.length ? <p className="text-7xl">{seconds}</p> : null}
+          {!allMissions.length ? (
             <div>
               <img
                 className="h-14 animate-spin my-2"
@@ -92,10 +81,18 @@ export default function Upcoming() {
                 alt="loading"
               />
             </div>
-          )}
+          ) : null}
           <div className="rounded-lg border-2 border-themeWhite">
             <p className="p-1">SECONDS</p>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center space-y-4">
+        <div>
+          <img className="h-6" src={share} alt="share icon" />
+        </div>
+        <div className="pt-0 pb-2 md:pb-0">
+          <ShareFeature />
         </div>
       </div>
     </section>

@@ -27,4 +27,18 @@ function extractDates(date, type) {
   }
 }
 
-export { extractDates };
+const splitStringInHalf = (str) => {
+  const index = str.length / 2;
+  const firstHalf = str.slice(0, index);
+  const secondHalf = str.slice(index);
+
+  return (
+    <p>
+      {firstHalf}
+      <br></br>
+      {secondHalf}
+    </p>
+  );
+};
+
+export { extractDates, splitStringInHalf };
