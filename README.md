@@ -41,10 +41,13 @@ This project is a Single Page Application which aims to inform users of upcoming
 6. The seconds aspect of the countdown timer sometimes displays "s".
 7. The API endpoint for the next launch had a launch date in the past. Which meant my countdown would have been buggy.
 8. If there is an error fetching the data, although the error is logged in the console, the user is not given this information.
-9. The pages components have within them logic that could be split out into separate components and made reusable.
+9. The components have within them logic that could be split out into separate components and made reusable - for example the Header and Footer icons.
 10. The LaunchesTable can be refactored so that it can be reused to display both the AllLaunches data and the MyLaunches data - to remove repeated code in LikedLaunch.js which could be deleted in its entirety once the refactor is complete (DRY).
 11. Having just icons in the navbar on smaller screens could lead to a steep user learning curve RE navigating the application.
 12. For the upcoming launches and liked launches tables, if there were many launches, this page could become very long.
+13. The current testing suites for the common components are very basic and not very comprehensive.
+14. Fetching from API is done in two different components - a centralised place to request and store this data is preferred - and then passing down to child components/components that need this data.
+15. As the /next API Endpoint was sending a launch in the past, I ended up "hacking together" a solution, which isn't written in the best, most clear and succinct way.
 
 ## Planned Solutions - corresponding to the issues noted above
 
@@ -60,6 +63,9 @@ This project is a Single Page Application which aims to inform users of upcoming
 10. Complete the refactor of the LaunchesTable and the LaunchEntry component, and delete the LikedLaunch component.
 11. On smaller screens, replace the icons with a hamburger icon which when clicked, makes a side menu be visible to the user.
 12. Implement pagination on all tables.
+13. Flesh out the existing tests to expand the test coverage of these three components.
+14. Fetching the data is another file (for example App.js to handle all fetching, or better yet, a file dedicated solely to fetching data from the API), and then using prop drilling or context to pass this down to the components that need it.
+15. Rewrite all fetching data code, even if left in the files they're currently in.
 
 ## Potential New Features in Future Updates
 

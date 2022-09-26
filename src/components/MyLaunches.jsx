@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LikedLaunch from "../components/commonComponents/LikedLaunch";
+import { LOCAL_STORAGE_KEY } from "../utils/localStorageKey";
 
 import myLaunchesBackground from "../assets/myLaunchesBackground.png";
 
 export default function MyLaunches({ launches, setLaunches }) {
   const [likedLaunches, setLikedLaunches] = useState([]);
-  const LOCAL_STORAGE_KEY = "spaceX.allLaunches";
 
   useEffect(() => {
     const launches = [];
@@ -40,7 +40,7 @@ export default function MyLaunches({ launches, setLaunches }) {
       <h2 className="mb-6 text-center text-4xl text-themeWhite font-bold">
         My Launches
       </h2>
-      {!likedLaunches.length && (
+      {!likedLaunches.length ? (
         <p className="text-white text-2xl text-center p-y-4">
           Click{" "}
           <Link to="/all-launches" className="underline hover:animate-pulse">
@@ -49,8 +49,8 @@ export default function MyLaunches({ launches, setLaunches }) {
           to visit see all missions and choose which ones you want to save as
           your launches!
         </p>
-      )}
-      {likedLaunches.length && (
+      ) : null}
+      {likedLaunches.length ? (
         <section className="m-10">
           <div className="grid grid-cols-12 gap-1 bg-themeWhite text-themeBlack font-bold text-center p-5">
             <div className="text-sm col-span-4 md:text-base">Mission</div>
@@ -70,7 +70,7 @@ export default function MyLaunches({ launches, setLaunches }) {
             />
           ))}
         </section>
-      )}
+      ) : null}
     </section>
   );
 }
