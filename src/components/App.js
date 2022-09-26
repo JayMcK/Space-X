@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
@@ -7,13 +8,34 @@ import AllLaunches from "./AllLaunches";
 import MyLaunches from "./MyLaunches";
 
 function App() {
+  const [allLaunches] = useMission([]);
+
+  function useMission() {
+    const ALL_URL = "https://api.spacexdata.com/v4/launches/upcoming";
+
+    const [allMissions, setAllMissions] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const [allMissionsResponse] = await Promise.all([fetch(ALL_URL)]);
+        const [allMissions] = await Promise.all([allMissionsResponse.json()]);
+        setAllMissions(allMissions);
+      };
+      fetchData();
+    }, []);
+    return [allMissions];
+  }
+
   return (
     <Router>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/upcoming-launch" element={<Upcoming />} />
-        <Route path="/all-launches" element={<AllLaunches />} />
+        <Route
+          path="/all-launches"
+          element={<AllLaunches launches={allLaunches} />}
+        />
         <Route path="/my-launches" element={<MyLaunches />} />
       </Routes>
       <Footer />

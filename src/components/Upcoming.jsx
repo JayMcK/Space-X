@@ -94,7 +94,7 @@ function useMission() {
   const ALL_URL = "https://api.spacexdata.com/v4/launches/upcoming";
 
   const [nextMission, setNextMission] = useState({});
-  const [allMissions, setAllMissions] = useState({});
+  const [allMissions, setAllMissions] = useState([]);
   const [missionThree, setMissionThree] = useState({});
 
   useEffect(() => {
