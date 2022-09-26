@@ -34,9 +34,9 @@ export default function LaunchesTable({ launches }) {
   return (
     <section role="list" className="list m-10">
       <div className="grid grid-cols-12 gap-1 bg-themeWhite text-themeBlack font-bold text-center p-5">
-        <div className="col-span-4">Mission</div>
-        <div className="col-span-3">Date (UTC)</div>
-        <div className="col-span-4">Launchpad</div>
+        <div className="text-sm col-span-4 md:text-base">Mission</div>
+        <div className="text-sm col-span-3 md:text-base">Date (UTC)</div>
+        <div className="text-sm col-span-4 md:text-base">Launchpad</div>
         <div className="col-span-1"></div>
       </div>
       {allLaunches.length &&

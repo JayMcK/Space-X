@@ -11,12 +11,12 @@ export default function Header() {
     <nav
       role="navigation"
       aria-label="Main"
-      className="header-component flex flex-row justify-between items-center bg-themeWhite font-bold px-2"
+      className="header-component flex flex-row py-2 justify-between items-center bg-themeWhite font-bold px-2 md:py-0"
     >
       <div>
         <Link to="/">
           <img
-            className="h-10 cursor-pointer origin-center active:opacity-50"
+            className="h-10 cursor-pointer active:opacity-50"
             src={logo}
             alt="logo"
           />
@@ -24,43 +24,45 @@ export default function Header() {
       </div>
       <div className="flex flex-row">
         <Link to="/">
-          <div className="flex flex-col p-4 space-y-2 cursor-pointer">
+          <div className="flex flex-col p-2 space-y-2 cursor-pointer md:p-4">
             <img
               className="h-8 origin-center hover:rotate-12 active:opacity-50"
               src={house}
               alt="rocket"
             />
-            <p className="font-themeFontFamily">Home</p>
+            <p className="hidden font-themeFontFamily md:block">Home</p>
           </div>
         </Link>
         <Link to="/upcoming-launch">
-          <div className="flex flex-col p-4 space-y-2 cursor-pointer">
+          <div className="flex flex-col p-2 space-y-2 cursor-pointer md:p-4">
             <img
               className="h-8 origin-center hover:rotate-12 active:opacity-50"
               src={rocket}
               alt="rocket"
             />
-            <p className="font-themeFontFamily">Upcoming launch</p>
+            <p className="hidden font-themeFontFamily md:block">
+              Upcoming launch
+            </p>
           </div>
         </Link>
         <Link to="/all-launches">
-          <div className="flex flex-col p-4 space-y-2 cursor-pointer">
+          <div className="flex flex-col p-2 space-y-2 cursor-pointer md:p-4">
             <img
               className="h-8 origin-center hover:rotate-12 active:opacity-50"
               src={planets}
               alt="rocket"
             />
-            <p className="font-themeFontFamily">All Launches</p>
+            <p className="hidden font-themeFontFamily md:block">All Launches</p>
           </div>
         </Link>
         <Link to="/my-launches">
-          <div className="flex flex-col p-4 space-y-2 cursor-pointer">
+          <div className="flex flex-col p-2 space-y-2 cursor-pointer md:p-4">
             <img
               className="h-8 origin-center hover:rotate-12 active:opacity-50"
               src={filledHeart}
               alt="rocket"
             />
-            <p className="font-themeFontFamily">My Launches</p>
+            <p className="hidden font-themeFontFamily md:block">My Launches</p>
           </div>
         </Link>
       </div>

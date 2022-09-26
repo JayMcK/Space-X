@@ -34,7 +34,7 @@ export default function MyLaunches({ launches, setLaunches }) {
 
   return (
     <section
-      className="flex flex-col font-themeFontFamily relative justify-center bg-black md:bg-themeWhite pt-2 h-screen"
+      className="flex flex-col font-themeFontFamily relative justify-center bg-black md:bg-themeWhite pt-2 min-h-screen"
       style={{ backgroundImage: `url(${myLaunchesBackground})` }}
     >
       <h2 className="mb-6 text-center text-4xl text-themeWhite font-bold">
@@ -53,9 +53,9 @@ export default function MyLaunches({ launches, setLaunches }) {
       {likedLaunches.length && (
         <section className="m-10">
           <div className="grid grid-cols-12 gap-1 bg-themeWhite text-themeBlack font-bold text-center p-5">
-            <div className="col-span-4">Mission</div>
-            <div className="col-span-3">Date (UTC)</div>
-            <div className="col-span-4">Launchpad</div>
+            <div className="text-sm col-span-4 md:text-base">Mission</div>
+            <div className="text-sm col-span-3 md:text-base">Date (UTC)</div>
+            <div className="text-sm col-span-4 md:text-base">Launchpad</div>
             <div className="col-span-1"></div>
           </div>
           {likedLaunches.map((launch) => (
